@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  empleados:
+    build: 
+      context: ./empleados-ms
+      dockerfile: dockerfile
+    ports:
+    - "8080:8080"
+    networks:
+    - vet_network
+    restart: always
+  
+  historial:
+    build:
+      context: ./historial-clinico-ms
+      dockerfile: dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - vet_network
+    restart: always
+
+networks:
+  vet_network:
+    driver: bridge
